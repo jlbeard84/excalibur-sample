@@ -1,18 +1,20 @@
 {
-    "name": "excalibur-sample",
-    "version": "1.0.0",
-    "description": "Sample ExcaliburJS Project",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/jlbeard84/excalibur-sample.git"
-    },
-    "scripts": {
-      "start": "./node_modules/.bin/tsc -p game/tsconfig.json"
-    },
-    "dependencies": {
-      "excalibur": "0.13.1"
-    },
-    "devDependencies": {
-      "typescript": "2.5.3"
-    }
+  "name": "excalibur-sample",
+  "version": "1.0.0",
+  "description": "Sample ExcaliburJS Project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlbeard84/excalibur-sample.git"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/webpack"
+  },
+  "dependencies": {
+    "excalibur": "0.13.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^3.0.3",
+    "typescript": "2.5.3",
+    "webpack": "^3.8.1"
+  }
 }
