@@ -7,7 +7,12 @@ import { Game } from "./engines";
 var game = new Game();
 game.loadScene();
 
-var map = new TiledResource("./assets/tilesets/treetop.json");
+var mappath = "/assets/tilesets/testmap.json";
+var map = new TiledResource(mappath);
+map.imagePathAccessor = function (path, tileset) {
+    return this.path;
+ }
+//map.processData(map.data);
 var loader = new Loader([map]);
 
 
