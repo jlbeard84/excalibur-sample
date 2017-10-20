@@ -1,0 +1,18 @@
+{ "columns":6,
+ "grid":
+    {
+     "height":512,
+     "orientation":"orthogonal",
+     "width":512
+    },
+ "image":"treetop.png",
+ "imageheight":224,
+ "imagewidth":192,
+ "margin":0,
+ "name":"treetop",
+ "spacing":0,
+ "tilecount":42,
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset"
+}

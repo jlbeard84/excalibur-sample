@@ -1,44 +1,73 @@
 import { Actor, CollisionType, Color, Engine } from "excalibur";
 
-import { Ball, Paddle } from "../actors";
+import { Ball, Brick, Paddle } from "../actors";
 
 export class Game extends Engine {
 
+    private bricks: Brick[];
     private paddle: Paddle;
     private ball: Ball;
 
     constructor() {
 
-        const defaultWidth: number = 0;
-        const defaultHeight: number = 0;
+        const defaultWidth: number = 800;
+        const defaultHeight: number = 600;
 
         super({ 
             width: defaultWidth,
             height: defaultHeight
         });
 
-        this.setup();
+        this.setup(this);
     }
 
-    public addPaddle(paddle: Paddle): void {
-        if (!this.paddle) {
-            this.paddle = paddle;
-            this.add(paddle);
-        }
+    public loadScene() {
+        this.paddle = new Paddle(this);
+        this.add(this.paddle);
+        
+        this.ball = new Ball(this);
+        this.add(this.ball);
+
+        this.bricks = [];
+
+        const padding: number = 20;
+        const xOffset: number = 65;
+        const yOffset: number = 20;
+        const columns: number = 5;
+        const rows: number = 3;
+        
+        const brickColor: Color[] = [
+            Color.Violet,
+            Color.Orange,
+            Color.Yellow
+        ];
+        
+        const brickWidth = this.getDrawHeight() / columns - padding - padding/columns;
+        const brickHeight = 30;
+        
+        for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < columns; j++) {
+        
+                const brick = new Brick(
+                    this,
+                    brickColor[j % brickColor.length],
+                    brickWidth,
+                    brickHeight,
+                    xOffset + j * (brickWidth + padding) + padding,
+                    yOffset + i * (brickHeight + padding) + padding
+                );
+
+                this.bricks.push(brick);
+                this.add(brick);
+            }
+        }   
     }
 
-    public addBall(ball: Ball): void {
-        if (!this.ball) {
-            this.ball = ball;
-            this.add(ball);
-        }
-    }
-
-    private setup(): void {
+    private setup(game: Game): void {
 
         this.input.pointers.primary.on("move", function(event: PointerEvent) {
-            if (this.paddle) {
-                this.paddle.pos.x = event.x;
+            if (game.paddle) {
+                game.paddle.pos.x = event.x;
             }
         });
         
@@ -46,9 +75,9 @@ export class Game extends Engine {
         
             console.log(event.button);
         
-            this.isPaused() 
-                ? this.start()
-                : this.stop();
+            game.isPaused() 
+                ? game.start()
+                : game.stop();
         })
     }
 }

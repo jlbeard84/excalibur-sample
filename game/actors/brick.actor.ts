@@ -1,31 +1,30 @@
 import { Actor, CollisionType, Color, Engine } from "excalibur";
 
-export class Paddle extends Actor  {
+export class Brick extends Actor  {
 
     constructor(
         game: Engine,
-        x: number = 150,
-        y: number = 0) {
+        color: Color,
+        width: number,
+        height: number,
+        x: number,
+        y: number) {
 
-        if (y <= 0) {
-            y = game.getDrawHeight() - 40;
-        }
+        super(x, y, width, height, color);
 
-        const width: number = 200;
-        const height: number = 20;
-        
-
-        super(x, y, width, height, Color.Chartreuse);
-
-        this.collisionType = CollisionType.Fixed;
+        this.collisionType = CollisionType.Active;
 
         this.setup();
     }
 
     private setup() {
 
+        const brick = this;
+
         this.on("precollision", function(event: ex.PreCollisionEvent) {
-            
+
+            brick.kill();
+        
             const intersection = event.intersection.normalize();
         
             if (Math.abs(intersection.x) > Math.abs(intersection.y)) {
