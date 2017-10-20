@@ -57,7 +57,7 @@ export class Ball extends Actor  {
         });
 
         this.on("exitviewport", function() {
-            alert("Game over!");
+            //alert("Game over!");
         });
     }
 }

@@ -7,9 +7,10 @@ import { Game } from "./engines";
 var game = new Game();
 game.loadScene();
 
-// var map = new TiledResource("./assets/tilesets/treetop.json");
+var map = new TiledResource("./assets/tilesets/treetop.json");
+var loader = new Loader([map]);
 
-// var loader = new Loader([map]);
+
 
 
 // var resources = {
@@ -23,18 +24,20 @@ game.loadScene();
 // }
 
 // uncomment loader after adding resources
-game.start(/*loader*/).then(() => {
+game.start(loader).then(() => {
 
-    // console.log("Game loaded");
+    console.log("Game loaded");
+
+    console.log(map);
     
-    // // Process the data in the map as you like
+    // Process the data in the map as you like
     // map.data.tilesets.forEach(function(ts) {
-    //    console.log(ts.image, ts.imageTexture.isLoaded());
+    //    console.log(ts.image);
     // });
     
-    // // get a Excalibur `TileMap` instance
-    // var tm = map.getTileMap();
+    // get a Excalibur `TileMap` instance
+    var tm = map.getTileMap();
     
-    // // draw the tile map
-    // game.add(tm);
+    // draw the tile map
+    game.add(tm);
 });
