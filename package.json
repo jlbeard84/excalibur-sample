@@ -1,25 +1,46 @@
 {
-  "name": "excalibur-sample",
-  "version": "1.0.0",
-  "description": "Sample ExcaliburJS Project",
+  "name": "@excaliburjs/excalibur-tiled",
+  "version": "2.1.0",
+  "description": "excalibur-tiled provides Tiled map editor integration with Excalibur.js",
+  "main": "dist/excalibur-tiled.js",
+  "typings": "dist/lib/index.d.ts",
+  "author": {
+    "name": "Excalibur.js Team",
+    "email": "excaliburjs@gmail.com",
+    "url": "http://excaliburjs.com"
+  },
+  "homepage": "https://github.com/excaliburjs/excalibur-tiled",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jlbeard84/excalibur-sample.git"
+    "url": "git://github.com/excaliburjs/excalibur-tiled.git"
   },
+  "bugs": {
+    "url": "https://github.com/excaliburjs/excalibur-tiled/issues"
+  },
+  "license": "BSD-2-Clause",
+  "keywords": [
+    "excalibur",
+    "game",
+    "engine",
+    "tiled",
+    "maps",
+    "map",
+    "typescript",
+    "javascript",
+    "simple"
+  ],
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "serve": "webpack-dev-server --content-base dist/"
-  },
-  "dependencies": {
-    "@excaliburjs/excalibur-tiled": "2.1.0",
-    "excalibur": "0.13.1"
+    "start": "webpack-dev-server --config webpack.config.test.js --open",
+    "watch": "webpack --progress --watch",
+    "build": "cross-env NODE_ENV=production webpack",
+    "test": "webpack --config webpack.config.test.js"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "4.2.0",
-    "html-webpack-plugin": "2.30.1",
-    "ts-loader": "3.0.3",
-    "typescript": "2.5.3",
-    "webpack": "3.8.1",
-    "webpack-dev-server": "2.9.2"
+    "cross-env": "^5.0.4",
+    "excalibur": "^0.11.0",
+    "ts-loader": "^2.3.2",
+    "typescript": "^2.3.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
   }
 }

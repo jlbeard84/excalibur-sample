@@ -1,0 +1,13 @@
+{ "columns":12,
+ "image":"..\/excalibur-sample\/game\/assets\/tilesets\/sewer_tileset.png",
+ "imageheight":217,
+ "imagewidth":192,
+ "margin":0,
+ "name":"treetoptileset",
+ "spacing":0,
+ "tilecount":156,
+ "tileheight":16,
+ "tilewidth":16,
+ "transparentcolor":"#ff00ff",
+ "type":"tileset"
+}
